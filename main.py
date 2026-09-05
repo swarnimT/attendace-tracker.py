@@ -20,4 +20,4 @@ cursor.execute("""
     CREATE TABLE IF NOT EXISTS attendance (attendance_id INTEGER PRIMARY KEY AUTOINCREMENT, student_id INTEGER NOT NULL,student_id INTEGER NOT NULL, date TEXT NOT NULL, status TEXT NOT NULL, FOREIGN KEY (student_id) REFERENCES students (student_id),FOREIGN KEY (student_id) REFERENCES students (student_id))""")
 
 sqlite3.Cursor.execute("""
-    CREATE TABLE IF NOT EXISTS lecture_summary (summary_id INTEGER PRIMARY KEY AUTOINCREMENT, lecture_date TEXT NOT NULL, total_students INTEGER NOT NULL, present_students INTEGER NOT NULL, absent_students INTEGER NOT NULL)""")
+    CREATE TABLE IF NOT EXISTS lecture_summary (summary_id INTEGER PRIMARY KEY AUTOINCREMENT,student_id INTEGER NOT NULL, student_id INTEGER NOT NULL,total_lectures INTEGER NOT NULL,attended_lectures INTEGER NOT NULL, FOREIGN KEY (student_id) REFERENCES students (student_id),FOREIGN KEY (sUBJECT_id) REFERENCES students (student_id))""")
