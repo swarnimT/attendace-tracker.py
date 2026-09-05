@@ -67,4 +67,5 @@ def create_student():
         if not subject_name:
             print("Subject name cannot be empty.")
             return
-        cursor.execute("""INSERT INTO subjects (student_id, name) VALUES (?, ?)""", (student_id, subject_name))
+        cursor.execute("""INSERT INTO subjects (student_id, subject_name) VALUES (?, ?)""", (student_id, subject_name))
+        
