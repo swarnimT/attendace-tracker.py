@@ -63,7 +63,7 @@ def create_student():
         return
     print("\nAdd subjects")
     for i in range(number_of_subjects):
-        subject_name = input(f"Enter subject {i + 1}: ").strip()
+        subject_name = input(f"Enter subject {i + 1} name: ").strip()
         if not subject_name:
             print("Subject name cannot be empty.")
             return
