@@ -17,7 +17,17 @@ cursor.execute("""
     CREATE TABLE IF NOT EXISTS students (student_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, creation_date TEXT NOT NULL)""")
 
 cursor.execute("""
-    CREATE TABLE IF NOT EXISTS attendance (attendance_id INTEGER PRIMARY KEY AUTOINCREMENT, student_id INTEGER NOT NULL,student_id INTEGER NOT NULL, date TEXT NOT NULL, status TEXT NOT NULL, FOREIGN KEY (student_id) REFERENCES students (student_id),FOREIGN KEY (student_id) REFERENCES students (student_id))""")
+    CREATE TABLE IF NOT EXISTS attendance (attendance_id INTEGER PRIMARY KEY AUTOINCREMENT, student_id INTEGER NOT NULL,student_id INTEGER NOT NULL, date TEXT NOT NULL, status TEXT NOT NULL, FOREIGN KEY (student_id) REFERENCES students (student_id),FOREIGN KEY (subject_id) REFERENCES subjects (subject_id))""")
 
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS lecture_summary (summary_id INTEGER PRIMARY KEY AUTOINCREMENT,student_id INTEGER NOT NULL, student_id INTEGER NOT NULL,total_lectures INTEGER NOT NULL,attended_lectures INTEGER NOT NULL, FOREIGN KEY (student_id) REFERENCES students (student_id),FOREIGN KEY (subject_id) REFERENCES subjects (subject_id))""")
+
+connection.commit()
+
+def get_students():
+    cursor.execute("SELECT * FROM students WHERE student_id=?", (student_id,))
+    return cursor.fetchall()
+
+def get_subjects():
+    cursor.execute("SELECT * FROM subjects WHERE student_id=?", (subject_id,))
+    return cursor.fetchall()
