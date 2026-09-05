@@ -68,4 +68,19 @@ def create_student():
             print("Subject name cannot be empty.")
             return
         cursor.execute("""INSERT INTO subjects (student_id, subject_name) VALUES (?, ?)""", (student_id, subject_name))
-        
+        subject_id = cursor.lastrowid
+
+        print(f"\n{subject_name}")
+        try:
+            total=int(input("how many lectures were conducted? "))
+            attended=int(input("how many lectures did you attend? "))
+        except ValueError:
+            print("Invalid input. Please enter valid numbers.")
+            return
+        if total < 0 or attended < 0:
+            print("Invalid lecture counts. Please ensure total lectures is non-negative and attended lectures is between 0 and total.")
+            return
+        if attended > total:
+            print("Attended lectures cannot be greater than total lectures.")
+            return
+        cursor.execute("""INSERT INTO lecture_summary (student_id, subject_id, total_lectures, attended_lectures) VALUES (?, ?, ?, ?)""", (student_id, subject_id, total, attended))
